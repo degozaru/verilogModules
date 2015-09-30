@@ -4,7 +4,7 @@
  *             L2 - length of input 2
  */
 
-module multiply #(parameter L1 = 8,
+module multiply     #(parameter L1 = 8,
                     parameter L2 = 8)
                     
                     (input signed [L1-1:0] in1,
