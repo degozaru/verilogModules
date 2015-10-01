@@ -1,16 +1,23 @@
 /* Testbench for axpb.v */
-
-module axpb(
-    input signed [6:0] x,
-	 output signed [11:0] out 
-    );
-
-	 
-	 wire [10:0] multOut;
-	 multiply #(.L1(4),.L2(7)) 
-			mul(.in1(-(4'd3)), .in2(x), .out(multOut));
-	 add #(.L1(11), .L2(4))
-			addr(.in1(multOut), .in2(4'd3), .out(out));
+module axpb_tb();
+	reg signed [6:0] x;
+	wire [11:0] out;
+	axpb DUT(.x(x), .out(out));
+	
+	initial begin
+		x = -(7'd1);
+		#50
+		x = (7'd3);
+		#50
+		x = (7'd5);
+		#50
+		x = (7'd33);
+		#50
+		x = -(7'd31);
+		#50
+		$finish;
+	end
+		
 
 
 endmodule
